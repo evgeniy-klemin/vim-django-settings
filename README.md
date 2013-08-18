@@ -1,0 +1,2 @@
+vim-django-settings
+===================
