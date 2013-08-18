@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/usr/local/kws/devs/mebelnarvskiy/venv/lib/python2.7/site-packages/django_generic_ratings-0.7-py2.7.egg-info'
+let g:netrw_dirhist_2='/usr/local/kws/devs/mebelnarvskiy/base/templates/emails/new_comment'
+let g:netrw_dirhist_3='/usr/local/kws/devs/mebelnarvskiy/catalog/templates/catalog'
