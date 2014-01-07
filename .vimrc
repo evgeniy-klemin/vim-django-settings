@@ -9,6 +9,27 @@ set sta
 "mouse
 set mouse=a
 
+
+"vundle config
+set nocompatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+"репозитории на github
+Bundle 'klen/python-mode'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'gmarik/vundle'
+Bundle 'elzr/vim-json'
+Bundle 'scrooloose/nerdtree'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
+"репозитории vim/scripts
+Bundle 'vim-coffee-script'
+Bundle 'vim-less'
+"git репозитории (не на github)
+"Bundle 'git://git.wincent.com/command-t.git'
+
+
 "smart ident
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
@@ -73,6 +94,13 @@ set number "nu - Line numbers on
 :cmap <F5> <Esc><Esc>:set mouse=a<CR>:set nopaste<CR>:set number<CR>
 :cmap <F6> <Esc><Esc>:set mouse=c<CR>:set paste<CR>:set nonumber<CR>
 :map <F7> :set number!<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 hi LineNr ctermfg=black ctermbg=gray
 au BufRead,BufNewFile *.html set filetype=htmldjango
+
+autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
