@@ -9,7 +9,6 @@ set sta
 "mouse
 set mouse=a
 
-
 "vundle config
 set nocompatible
 set rtp+=~/.vim/bundle/vundle/
@@ -20,9 +19,12 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/vundle'
 Bundle 'elzr/vim-json'
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'einars/js-beautify'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'w0ng/vim-hybrid'
 "репозитории vim/scripts
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
@@ -68,21 +70,15 @@ set showmode " display the current mode
 "set cot+=menuone " show preview of function prototype
 
 
-" Pathogen load
-filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin indent on
-
-
+let g:solarized_termcolors=16
+let g:hybrid_use_iTerm_colors = 1
+"let g:hybrid_use_Xresources = 1
 set background=dark
 colorscheme solarized
+"colorscheme hybrid
 
 
 let g:pymode_folding = 0
-let g:solarized_termcolors=16
 
 set encoding=utf-8
 set number "nu - Line numbers on
@@ -94,7 +90,9 @@ set number "nu - Line numbers on
 :cmap <F5> <Esc><Esc>:set mouse=a<CR>:set nopaste<CR>:set number<CR>
 :cmap <F6> <Esc><Esc>:set mouse=c<CR>:set paste<CR>:set nonumber<CR>
 :map <F7> :set number!<CR>
-map <C-n> :NERDTreeToggle<CR>
+
+map <C-n> :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 hi LineNr ctermfg=black ctermbg=gray
 au BufRead,BufNewFile *.html set filetype=htmldjango
@@ -104,3 +102,14 @@ autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Save as sudo
+cmap w!! w !sudo tee % >/dev/null
+
+set nobackup
