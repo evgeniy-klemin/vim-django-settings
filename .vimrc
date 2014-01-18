@@ -9,6 +9,7 @@ set sta
 "mouse
 set mouse=a
 
+
 "vundle config
 set nocompatible
 set rtp+=~/.vim/bundle/vundle/
@@ -25,6 +26,7 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'einars/js-beautify'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'w0ng/vim-hybrid'
+Bundle 'scrooloose/nerdcommenter'
 "репозитории vim/scripts
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
@@ -70,9 +72,16 @@ set showmode " display the current mode
 "set cot+=menuone " show preview of function prototype
 
 
-let g:solarized_termcolors=16
-let g:hybrid_use_iTerm_colors = 1
+" Pathogen load
+"filetype off
+"call pathogen#infect()
+"call pathogen#helptags()
+"filetype plugin indent on
+
+
+"let g:hybrid_use_iTerm_colors = 1
 "let g:hybrid_use_Xresources = 1
+let g:solarized_termcolors = 256
 set background=dark
 colorscheme solarized
 "colorscheme hybrid
@@ -94,7 +103,7 @@ set number "nu - Line numbers on
 map <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1
 
-hi LineNr ctermfg=black ctermbg=gray
+"hi LineNr ctermfg=black ctermbg=gray
 au BufRead,BufNewFile *.html set filetype=htmldjango
 
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
