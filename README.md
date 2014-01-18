@@ -17,5 +17,9 @@ vim-django-settings
     ```
     $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     ```
-5. Launch `vim` and run `:BundleInstall` 
-6. Reload vim settings `:so ~/.vimrc`
+5. Install ctags
+    ```
+    $ sudo aptitude install exuberant-ctags
+    ```
+6. Launch `vim` and run `:BundleInstall` 
+7. Reload vim settings `:so ~/.vimrc`

@@ -27,6 +27,7 @@ Bundle 'einars/js-beautify'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'majutsushi/tagbar'
 "репозитории vim/scripts
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
@@ -102,6 +103,8 @@ set number "nu - Line numbers on
 
 map <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1
+
+nmap <F8> :TagbarToggle<CR>
 
 "hi LineNr ctermfg=black ctermbg=gray
 au BufRead,BufNewFile *.html set filetype=htmldjango
