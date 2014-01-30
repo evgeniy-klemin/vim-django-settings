@@ -28,6 +28,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
 "репозитории vim/scripts
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
@@ -87,6 +88,17 @@ set background=dark
 colorscheme solarized
 "colorscheme hybrid
 
+" aireline
+let g:airline_theme='dark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_enable_branch=1
+let g:airline_enable_syntastic=1
+let g:airline_theme='dark'
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_branch_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
 
 let g:pymode_folding = 0
 
