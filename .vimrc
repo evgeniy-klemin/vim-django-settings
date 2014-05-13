@@ -103,6 +103,9 @@ let g:airline_detect_paste=1
 
 let g:pymode_folding = 0
 
+"jshint
+let JSHintUpdateWriteOnly=1
+
 set encoding=utf-8
 set number "nu - Line numbers on
 
@@ -114,8 +117,10 @@ set number "nu - Line numbers on
 :cmap <F6> <Esc><Esc>:set mouse=c<CR>:set paste<CR>:set nonumber<CR>
 :map <F7> :set number!<CR>
 
+"NERDTree
 map <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeIgnore = ['\.pyc$']
 
 nmap <F8> :TagbarToggle<CR>
 
