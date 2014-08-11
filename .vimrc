@@ -1,40 +1,150 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"=====================================================
+" Vundle settings
+"=====================================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+"---------=== Code/project navigation ===-------------
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'majutsushi/tagbar'
+"--------------=== Color scheme  ===------------------
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'w0ng/vim-hybrid'
+"--------------=== Snippets support ===---------------
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+"--------------=== Languages support ===--------------
+" --- Python ---
+Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
+" --- JavaScript ---
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
+Bundle "wookiehangover/jshint.vim"
+"---------------=== Helpers ===-----------------------
+Bundle 'scrooloose/nerdcommenter'
+"-----------------=== Syntax ===----------------------
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'elzr/vim-json'
+Bundle 'vim-coffee-script'
+Bundle 'vim-less'
+"------------------=== Other ===----------------------
+Bundle 'bling/vim-airline'
+
+
+"=====================================================
+" General settings
+"=====================================================
+syntax on " enable syntax highlighting
 "tabs settings
 set ts=4
 set sts=4
 set sw=4
-set ai "autoindent - indent at the same level of the previous line
-set et
-set sta
 
-"mouse
+set autoindent smartindent " auto/smart indent
+set expandtab " expand tabs to spaces
+set smarttab " tab and backspace are smart
+
+set backspace=indent,eol,start " backspace for dummys
+let no_buffers_menu=1
+set switchbuf=useopen,usetab
+
+let JSHintUpdateWriteOnly=1
+
+"=====================================================
+" Appearance
+"=====================================================
+set ruler " show the cursor pos
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set completeopt-=preview " don't show docs on the top
+set gcr=a:blinkon0
+set cursorline " highlight current line
+set ttyfast " Improves redrawing
+set scrolloff=5 " always have at least 5 lines before the window's bottom
+
+" disable bells
+set visualbell t_vb=
+set novisualbell
+
+let g:solarized_termcolors = 256
+set background=dark
+colorscheme solarized
+
+set encoding=utf-8
+set number "nu - Line numbers on
+
+" highlight more the 80 columns
+augroup vimrc_autocmds
+    autocmd!
+    autocmd FileType ruby,python,javascript,c,cpp highlight OverLength ctermfg=red
+    autocmd FileType ruby,python,javascript,c,cpp match OverLength /\%80v.\+/
+    autocmd FileType ruby,python,javascript,c,cpp set nowrap
+augroup END
+
+let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$']
+
+au BufRead,BufNewFile *.html set filetype=htmldjango
+
+let g:jedi#popup_select_first = 0 " Disable choose first function/method at autocomplete
+
+" highlight extra whitespaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+"=====================================================
+" Search & Replace
+"=====================================================
+set hlsearch " highlight searches
+set ignorecase " make searches case-insensitive, unless they contain upper-case letters:
+set smartcase
+set incsearch " show the `best match so far' as search strings are typed:
+
+"=====================================================
+" GUI Stuff
+"=====================================================
+set mousemodel=extend " Enable mouse support
+set selectmode=mouse
+set mousefocus
 set mouse=a
 
+"=====================================================
+" Backup options
+"=====================================================
+set backupdir=~/tmp,/tmp " backups (~)
+set directory=~/tmp,/tmp " swap files
+set backup               " enable backups
 
-"vundle config
-set nocompatible
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-"репозитории на github
-Bundle 'klen/python-mode'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'gmarik/vundle'
-Bundle 'elzr/vim-json'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'einars/js-beautify'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'majutsushi/tagbar'
-Bundle 'bling/vim-airline'
-"репозитории vim/scripts
-Bundle 'vim-coffee-script'
-Bundle 'vim-less'
-"git репозитории (не на github)
-"Bundle 'git://git.wincent.com/command-t.git'
-
+"=====================================================
+" Python-mode
+"=====================================================
+" disable autocompleat, use instead jedi-vim
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+" docs
+let g:pymode_doc = 0
+let g:pymode_doc_key = 'K'
+" code check
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_ignore="E501,W601,C0110"
+let g:pymode_lint_write = 1
+" syntax
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" other
+let g:pymode_folding = 0
+let g:pymode_virtualenv = 1
 
 "smart ident
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -46,49 +156,15 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 "filetype plugin on
 filetype plugin indent on
 
-syntax on " enable syntax highlighting
-set cursorline " highlight current line
-set ruler " show the ruler
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set showcmd " show partial commands in status line and
 set laststatus=1
-set statusline=%lt;%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P
-set backspace=indent,eol,start " backspace for dummys
 set showmatch " show matching brackets/parenthesis
-set wildmenu
-set wildmode=list:longest,full " comand <tab> completion, list matches and
 set shortmess+=filmnrxoOtT " abbrev. of messages (avoids 'hit enter')
-set showmode " display the current mode
-"set spell " spell checking on
-"set tabpagemax=15 " only show 15 tabs
-"filetype plugin indent on " Automatically detect file types.
-"set incsearch " find as you type search
-"set hlsearch " highlight search terms
-"set wrap " wrap long lines
-"set shiftwidth=4 " use indents of 4 spaces
-"set noexpandtab " tabs are tabs, not spaces
-"set pastetoggle=<f12> " pastetoggle (sane indentation on pastes)
-"set comments=sl:/*,mb:*,elx:*/ " auto format comment blocks
-"setlocal omnifunc=syntaxcomplete#Complete " activate autocomplete
-"(intellisense)
-"set cot+=menuone " show preview of function prototype
 
 
-" Pathogen load
-"filetype off
-"call pathogen#infect()
-"call pathogen#helptags()
-"filetype plugin indent on
-
-
-"let g:hybrid_use_iTerm_colors = 1
-"let g:hybrid_use_Xresources = 1
-let g:solarized_termcolors = 256
-set background=dark
-colorscheme solarized
-"colorscheme hybrid
-
-" aireline
+"=====================================================
+" Aireline
+"=====================================================
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_enable_branch=1
@@ -99,12 +175,14 @@ let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+set noshowmode
 
-let g:pymode_folding = 0
 
-set encoding=utf-8
-set number "nu - Line numbers on
-
+"=====================================================
+" Key mapping
+"=====================================================
 :nmap <F5> :set mouse=a<CR>:set nopaste<CR>:set number<CR>
 :nmap <F6> :set mouse=c<CR>:set paste<CR>:set nonumber<CR>
 :imap <F5> <Esc>:set mouse=a<CR>:set nopaste<CR>:set number<CR>
@@ -113,14 +191,14 @@ set number "nu - Line numbers on
 :cmap <F6> <Esc><Esc>:set mouse=c<CR>:set paste<CR>:set nonumber<CR>
 :map <F7> :set number!<CR>
 
-map <C-n> :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup = 1
+" add new line before or after cursor
+nmap oo o<Esc>k
+nmap OO O<Esc>j
 
+map <C-n> :NERDTreeTabsToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-"hi LineNr ctermfg=black ctermbg=gray
-au BufRead,BufNewFile *.html set filetype=htmldjango
-
+" Autoformat
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -133,7 +211,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" autocompleate <Ctrl+Space>
+inoremap <C-space> <C-x><C-o>
+
 " Save as sudo
 cmap w!! w !sudo tee % >/dev/null
-
-set nobackup
