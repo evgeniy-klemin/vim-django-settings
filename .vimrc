@@ -14,6 +14,7 @@ Bundle 'majutsushi/tagbar'
 "--------------=== Color scheme  ===------------------
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'w0ng/vim-hybrid'
+Bundle 'sickill/vim-monokai'
 "--------------=== Snippets support ===---------------
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -75,7 +76,7 @@ set novisualbell
 
 let g:solarized_termcolors = 256
 set background=dark
-colorscheme solarized
+colorscheme monokai
 
 set encoding=utf-8
 set number "nu - Line numbers on
