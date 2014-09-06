@@ -12,8 +12,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'majutsushi/tagbar'
 "--------------=== Color scheme  ===------------------
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'w0ng/vim-hybrid'
 Bundle 'sickill/vim-monokai'
 "--------------=== Snippets support ===---------------
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -74,7 +72,6 @@ set scrolloff=5 " always have at least 5 lines before the window's bottom
 set visualbell t_vb=
 set novisualbell
 
-let g:solarized_termcolors = 256
 set background=dark
 colorscheme monokai
 
@@ -84,9 +81,9 @@ set number "nu - Line numbers on
 " highlight more the 80 columns
 augroup vimrc_autocmds
     autocmd!
-    autocmd FileType ruby,python,javascript,c,cpp highlight OverLength ctermfg=red
-    autocmd FileType ruby,python,javascript,c,cpp match OverLength /\%80v.\+/
-    autocmd FileType ruby,python,javascript,c,cpp set nowrap
+    autocmd FileType python,javascript highlight OverLength ctermfg=red
+    autocmd FileType python,javascript match OverLength /\%80v.\+/
+    autocmd FileType python,javascript set nowrap
 augroup END
 
 let g:nerdtree_tabs_open_on_console_startup = 1
@@ -112,7 +109,7 @@ set incsearch " show the `best match so far' as search strings are typed:
 " GUI Stuff
 "=====================================================
 set mousemodel=extend " Enable mouse support
-set selectmode=mouse
+"set selectmode=mouse
 set mousefocus
 set mouse=a
 
