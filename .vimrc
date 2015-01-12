@@ -34,6 +34,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'elzr/vim-json'
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
+Bundle 'mustache/vim-mustache-handlebars'
 "------------------=== Other ===----------------------
 Bundle 'bling/vim-airline'
 
