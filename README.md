@@ -11,7 +11,7 @@ vim-django-settings
     ```
 3. Setup 256 colors xterm
     ```
-    $ sudo echo "TERM=xterm-256color" >> /etc/environment
+    $ sudo sh -c "echo TERM=xterm-256color >> /etc/environment"
     ```
 4. install vundle
     ```
