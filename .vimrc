@@ -28,12 +28,15 @@ Bundle 'einars/js-beautify'
 Bundle "wookiehangover/jshint.vim"
 "---------------=== Helpers ===-----------------------
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'jpalardy/vim-slime'
 "-----------------=== Syntax ===----------------------
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'elzr/vim-json'
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'ekalinin/Dockerfile.vim'
 "------------------=== Other ===----------------------
 Bundle 'bling/vim-airline'
 
@@ -214,3 +217,9 @@ inoremap <C-space> <C-x><C-o>
 
 " Save as sudo
 cmap w!! w !sudo tee % >/dev/null
+
+
+"=====================================================
+" Plugins
+"=====================================================
+let g:slime_target = "tmux"
