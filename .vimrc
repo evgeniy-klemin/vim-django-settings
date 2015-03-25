@@ -37,6 +37,8 @@ Bundle 'vim-coffee-script'
 Bundle 'vim-less'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
 "------------------=== Other ===----------------------
 Bundle 'bling/vim-airline'
 
@@ -218,6 +220,9 @@ inoremap <C-space> <C-x><C-o>
 " Save as sudo
 cmap w!! w !sudo tee % >/dev/null
 
+" Copy and past word
+nmap wy viwy
+nmap wp viwp
 
 "=====================================================
 " Plugins
