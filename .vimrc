@@ -221,8 +221,8 @@ inoremap <C-space> <C-x><C-o>
 cmap w!! w !sudo tee % >/dev/null
 
 " Copy and past word
-nmap wy viwy
-nmap wp viwp
+nmap yw viwy
+nmap pw viwp
 
 "=====================================================
 " Plugins
